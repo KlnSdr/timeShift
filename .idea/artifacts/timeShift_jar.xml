@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="timeShift:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/timeShift_jar</output-path>
+    <root id="archive" name="timeShift.jar">
+      <element id="module-output" name="timeShift" />
+      <element id="extracted-dir" path="$USER_HOME$/dev/customJars/Hades/v0.0.4/hades.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

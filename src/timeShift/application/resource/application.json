@@ -1,0 +1,27 @@
+{
+  "dobby": {
+    "port": 3000,
+    "threads": 10,
+    "staticContent": {
+      "directory": "static"
+    },
+    "session": {
+      "maxAge": 1
+    }
+  },
+  "application": {
+    "name": "timeShift",
+    "version": "0.0.1"
+  },
+  "hades": {
+    "login": {
+      "maxAttempts": 5,
+      "lockDuration": 300000,
+      "redirect": {
+        "success": "/",
+        "successAdmin": "/hades/"
+      }
+    },
+    "context": "/timeShift"
+  }
+}
