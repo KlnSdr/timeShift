@@ -5,8 +5,9 @@ class calendarPanel implements Component {
 
   public instructions(): edomTemplate {
     return {
-      tag: "p",
-      text: "Hello World!"
+      tag: "div",
+      classes: ["calendarPanel"],
+      children: [new calendar().instructions()],
     };
   }
 
