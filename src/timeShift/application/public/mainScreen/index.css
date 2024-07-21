@@ -1,0 +1,32 @@
+:root {
+    --lighter: #f2fbc9;
+    --light: #d3e481;
+    --base: #91a437;
+    --dark: #55640a;
+    --darker: #1e2400;
+
+    --background: var(--lighter);
+    --highlight: var(--base);
+    --font: var(--darker);
+}
+
+* {
+    margin: 0px;
+    font-size: large;
+    font-family: monospace;
+    background-color: var(--background);
+    color: var(--font);
+    /* border-radius: 5px; */
+    webkit-touch-callout: none;
+    /* iOS Safari */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Chrome, Opera and Firefox */
+}
+
+*:focus {
+    outline: none;
+}
