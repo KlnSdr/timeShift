@@ -21,3 +21,13 @@
     background-color: var(--lighter);
     color: var(--darker);
 }
+
+.disabledButton {
+    border: none;
+}
+
+.disabledButton:hover,
+.disabledButton:focus {
+    background-color: var(--lighter);
+    color: var(--darker);
+}
