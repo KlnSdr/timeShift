@@ -1,0 +1,6 @@
+databaseStuff.txt
+test.*
+node_modules
+*.js
+!lib/*.js
+docs/

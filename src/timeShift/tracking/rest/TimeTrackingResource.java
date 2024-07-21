@@ -1,6 +1,5 @@
 package timeShift.tracking.rest;
 
-import dobby.annotations.Delete;
 import dobby.annotations.Get;
 import dobby.annotations.Post;
 import dobby.io.HttpContext;
