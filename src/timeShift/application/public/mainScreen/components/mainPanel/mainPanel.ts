@@ -6,8 +6,11 @@ class mainPanel implements Component {
   public instructions(): edomTemplate {
     return {
       tag: "div",
+      classes: ["mainPanel"],
       children: [
-        new button("click me", () => alert(1)).instructions(),
+        new startStopPanel().instructions(),
+        new calendarPanel().instructions(),
+        new infoTablePanel().instructions()
       ]
     };
   }

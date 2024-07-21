@@ -1,0 +1,15 @@
+.startStopPanel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.startStopPanel h1 {
+    font-size: 2em;
+}
+
+.startStopPanel .timeShift_button {
+    font-size: 2em;
+    padding: 0 2em;
+}

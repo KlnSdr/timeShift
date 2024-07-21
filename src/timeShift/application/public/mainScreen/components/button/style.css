@@ -1,6 +1,6 @@
 .timeShift_button {
     padding: 0.5vh;
-    border: 0.2vh solid var(--base);
+    border: 0.3vh solid var(--base);
     border-radius: 0.5vh;
 }
 
@@ -8,4 +8,16 @@
 .timeShift_button:focus {
     background-color: var(--base);
     color: var(--lighter);
+}
+
+.timeShift_button_inverted {
+    border: 0.3vh solid var(--base);
+    background-color: var(--base);
+    color: var(--lighter);
+}
+
+.timeShift_button_inverted:hover,
+.timeShift_button_inverted:focus {
+    background-color: var(--lighter);
+    color: var(--darker);
 }
