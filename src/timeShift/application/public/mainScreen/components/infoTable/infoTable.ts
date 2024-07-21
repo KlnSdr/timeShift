@@ -5,8 +5,11 @@ class infoTable implements Component {
 
   public instructions(): edomTemplate {
     return {
-      tag: "p",
-      text: "Hello World!"
+      tag: "table",
+      classes: ["infoTable"],
+      children: [
+        ...[1, 2, 3, 4].map((i: number) => new infoTableRow().instructions()),
+      ],
     };
   }
 

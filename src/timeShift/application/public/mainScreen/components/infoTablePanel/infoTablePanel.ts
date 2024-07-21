@@ -5,8 +5,12 @@ class infoTablePanel implements Component {
 
   public instructions(): edomTemplate {
     return {
-      tag: "p",
-      text: "Hello World!"
+      tag: "div",
+      classes: ["infoTablePanel"],
+      children: [
+        new infoTable().instructions(),
+        new infoTable().instructions(),
+      ],
     };
   }
 
