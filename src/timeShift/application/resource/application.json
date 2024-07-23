@@ -19,7 +19,7 @@
       "lockDuration": 300000,
       "redirect": {
         "success": "/",
-        "successAdmin": "/hades/"
+        "successAdmin": "/"
       }
     },
     "context": "/timeShift"

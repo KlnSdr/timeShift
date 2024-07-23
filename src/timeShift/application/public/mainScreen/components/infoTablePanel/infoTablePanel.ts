@@ -8,8 +8,8 @@ class infoTablePanel implements Component {
       tag: "div",
       classes: ["infoTablePanel"],
       children: [
-        new infoTable().instructions(),
-        new infoTable().instructions(),
+        new infoTable("Buchungen").instructions(),
+        new infoTable("Saldenübersicht").instructions(),
       ],
     };
   }

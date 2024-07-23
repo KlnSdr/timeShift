@@ -1,0 +1,5 @@
+.infoTableHeader {
+    font-weight: bold;
+    text-align: left;
+    background-color: var(--light);
+}
