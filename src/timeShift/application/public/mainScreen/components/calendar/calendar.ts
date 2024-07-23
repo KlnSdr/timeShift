@@ -18,6 +18,7 @@ class calendar implements Component {
   }
 
   public instructions(): edomTemplate {
+    const now: Date = new Date();
     return {
       tag: "div",
       classes: ["calendar"],
@@ -42,7 +43,7 @@ class calendar implements Component {
             new button(
               day.toString(),
               () => this.event(day, this.month + 1, this.year),
-              ["squareButton"],
+              ["squareButton", ...(now.getFullYear() === this.year && now.getMonth() === this.month && now.getDate() === day ? ["timeShift_button_inverted"] : [])],
             ).instructions(),
         ),
       ],
