@@ -28,6 +28,16 @@ class startStopPanel implements Component {
     ).instructions();
     bttn.id = this.buttonId;
 
+    const headerId: string =
+      "currentTime" + Math.random().toString(36).substring(7);
+
+    setInterval(() => {
+      const header: edomElement | undefined = edom.findById(headerId);
+      if (header) {
+        header.text = this.getCurrentTime();
+      }
+    }, 10_000);
+
     return {
       tag: "div",
       classes: ["startStopPanel"],
@@ -35,6 +45,7 @@ class startStopPanel implements Component {
         {
           tag: "h1",
           text: this.getCurrentTime(),
+          id: headerId,
         },
         bttn,
       ],
