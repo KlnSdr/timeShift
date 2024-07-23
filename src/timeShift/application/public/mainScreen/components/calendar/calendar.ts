@@ -1,10 +1,16 @@
 class calendar implements Component {
   private readonly month: number;
   private readonly year: number;
+  private readonly event: (day: number, month: number, year: number) => void;
 
-  public constructor(month: number, year: number) {
+  public constructor(
+    month: number,
+    year: number,
+    event: (day: number, month: number, year: number) => void,
+  ) {
     this.month = month;
     this.year = year;
+    this.event = event;
   }
 
   public render(parent: edomElement) {
@@ -33,9 +39,11 @@ class calendar implements Component {
         ),
         ...Array.from({ length: this.getDaysInMonth() }, (_, i) => i + 1).map(
           (day: number) =>
-            new button(day.toString(), () => {}, [
-              "squareButton",
-            ]).instructions(),
+            new button(
+              day.toString(),
+              () => this.event(day, this.month + 1, this.year),
+              ["squareButton"],
+            ).instructions(),
         ),
       ],
     };

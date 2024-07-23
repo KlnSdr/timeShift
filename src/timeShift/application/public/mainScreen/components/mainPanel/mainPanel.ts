@@ -9,10 +9,14 @@ class mainPanel implements Component {
       classes: ["mainPanel"],
       children: [
         new startStopPanel().instructions(),
-        new calendarPanel().instructions(),
-        new infoTablePanel().instructions()
-      ]
+        new calendarPanel(mainPanel.loadAndOpenDay).instructions(),
+        new infoTablePanel().instructions(),
+      ],
     };
+  }
+
+  private static loadAndOpenDay(day: number, month: number, year: number) {
+    console.log(`Loading and opening day ${day} ${month} ${year}`);
   }
 
   public unload() {}

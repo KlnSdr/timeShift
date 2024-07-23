@@ -2,6 +2,17 @@ class calendarPanel implements Component {
   private readonly calendarId: string = "calendar" + Math.random().toString(36);
   private readonly monthOutLabelId: string =
     "monthOutLabel" + Math.random().toString(36);
+  private readonly buttonEvent: (
+    day: number,
+    month: number,
+    year: number,
+  ) => void;
+
+  public constructor(
+    buttonEvent: (day: number, month: number, year: number) => void,
+  ) {
+    this.buttonEvent = buttonEvent;
+  }
 
   private currentMonth: number = new Date().getMonth();
   private currentYear: number = new Date().getFullYear();
@@ -78,6 +89,7 @@ class calendarPanel implements Component {
     const _calendar: edomTemplate = new calendar(
       this.currentMonth,
       this.currentYear,
+      this.buttonEvent,
     ).instructions();
     _calendar.id = this.calendarId;
     return _calendar;
