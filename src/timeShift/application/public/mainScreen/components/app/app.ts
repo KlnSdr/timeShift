@@ -1,20 +1,8 @@
 class app implements Component {
   private readonly links: NavItem[] = [
     {
-      destination: "/",
-      text: "home",
-    },
-    {
-      destination: "/about",
-      text: "about",
-    },
-    {
-      destination: "/contact",
-      text: "contact",
-    },
-    {
-      destination: "/logout",
-      text: "logout",
+      destination: "{{CONTEXT}}/do-logout",
+      text: "abmelden",
     },
   ];
 
