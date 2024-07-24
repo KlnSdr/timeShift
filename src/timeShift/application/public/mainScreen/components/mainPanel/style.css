@@ -2,10 +2,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr) 2fr;
     grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    height: 90vh;
-    margin-top: 5vh;
+    grid-column-gap: 1vw;
+    grid-row-gap: 1vh;
+    height: 89vh;
+    margin-top: 4vh;
+    padding: 1vh;
 }
 
 @media (max-width: 800px) {
