@@ -15,3 +15,7 @@
     width: 3vh;
     height: 3vh;
 }
+
+.currentDay {
+    border: 0.3vh solid var(--darker);
+}

@@ -42,8 +42,19 @@ class calendar implements Component {
           (day: number) =>
             new button(
               day.toString(),
-              () => this.event(day, this.month + 1, this.year),
-              ["squareButton", ...(now.getFullYear() === this.year && now.getMonth() === this.month && now.getDate() === day ? ["timeShift_button_inverted"] : [])],
+              (self: edomElement) => {
+                edom.allElements.filter((e: edomElement) => e.hasStyle("currentDay")).forEach((e: edomElement) => e.removeStyle("currentDay"));
+                self.applyStyle("currentDay");
+                this.event(day, this.month + 1, this.year);
+              },
+              [
+                "squareButton",
+                ...(now.getFullYear() === this.year &&
+                now.getMonth() === this.month &&
+                now.getDate() === day
+                  ? ["timeShift_button_inverted", ...calendarPanel.isFirstLoad() ? ["currentDay"] : []]
+                  : []),
+              ],
             ).instructions(),
         ),
       ],

@@ -7,6 +7,7 @@ class calendarPanel implements Component {
     month: number,
     year: number,
   ) => void;
+  private static firstLoad: boolean = true;
 
   public constructor(
     buttonEvent: (day: number, month: number, year: number) => void,
@@ -92,6 +93,7 @@ class calendarPanel implements Component {
       this.buttonEvent,
     ).instructions();
     _calendar.id = this.calendarId;
+    calendarPanel.firstLoad = false;
     return _calendar;
   }
 
@@ -99,6 +101,10 @@ class calendarPanel implements Component {
     return new Date(this.currentYear, this.currentMonth).toLocaleString("de", {
       month: "long",
     });
+  }
+
+  public static isFirstLoad(): boolean {
+    return this.firstLoad;
   }
 
   private getCurrentYear(): number {

@@ -51,7 +51,6 @@ class infoTablePanel implements Component {
   }
 
   private static renderDataBuchungen(data: dataPoint[]): edomTemplate[] {
-    console.log(data);
     return infoTablePanel
       .enhanceData(data)
       .map(
