@@ -6,6 +6,13 @@ class mainPanel implements Component {
   }
 
   public instructions(): edomTemplate {
+    setTimeout(() => {
+      this.loadAndOpenDay(
+        new Date().getDate(),
+        new Date().getMonth() + 1,
+        new Date().getFullYear(),
+      );
+    }, 100);
     return {
       tag: "div",
       classes: ["mainPanel"],
