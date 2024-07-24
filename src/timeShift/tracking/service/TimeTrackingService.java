@@ -4,6 +4,7 @@ import janus.Janus;
 import thot.connector.Connector;
 import timeShift.tracking.TimeTrackingDataPoint;
 
+import java.util.Arrays;
 import java.util.UUID;
 
 public class TimeTrackingService {
@@ -25,39 +26,30 @@ public class TimeTrackingService {
     }
 
     public TimeTrackingDataPoint[] find(UUID userId, int year) {
-        final NewJson[] jsons = Connector.readPattern(BUCKET_NAME, userId.toString() + "-" + year + ".*", NewJson.class);
-        final TimeTrackingDataPoint[] dataPoints = new TimeTrackingDataPoint[jsons.length];
-
-        for (int i = 0; i < jsons.length; i++) {
-            dataPoints[i] = Janus.parse(jsons[i], TimeTrackingDataPoint.class);
-        }
-
-        return dataPoints;
+        return find(userId.toString() + "-" + year + ".*");
     }
 
     public TimeTrackingDataPoint[] find(UUID userId, int year, int month) {
-        final NewJson[] jsons = Connector.readPattern(BUCKET_NAME, userId.toString() + "-" + year + "-" + month + ".*", NewJson.class);
-        final TimeTrackingDataPoint[] dataPoints = new TimeTrackingDataPoint[jsons.length];
-
-        for (int i = 0; i < jsons.length; i++) {
-            dataPoints[i] = Janus.parse(jsons[i], TimeTrackingDataPoint.class);
-        }
-
-        return dataPoints;
+        return find(userId.toString() + "-" + year + "-" + month + ".*");
     }
 
     public TimeTrackingDataPoint[] find(UUID userId, int year, int month, int day) {
-        final NewJson[] jsons = Connector.readPattern(BUCKET_NAME, userId.toString() + "-" + year + "-" + month + "-" + day, NewJson.class);
-        final TimeTrackingDataPoint[] dataPoints = new TimeTrackingDataPoint[jsons.length];
-
-        for (int i = 0; i < jsons.length; i++) {
-            dataPoints[i] = Janus.parse(jsons[i], TimeTrackingDataPoint.class);
-        }
-
-        return dataPoints;
+        return find(userId.toString() + "-" + year + "-" + month + "-" + day + "-.*");
     }
 
     public boolean delete(TimeTrackingDataPoint dataPoint) {
         return Connector.delete(BUCKET_NAME, dataPoint.getKey());
+    }
+
+    private TimeTrackingDataPoint[] find(String pattern) {
+        final NewJson[] jsons = Connector.readPattern(BUCKET_NAME, pattern, NewJson.class);
+        final TimeTrackingDataPoint[] dataPoints = new TimeTrackingDataPoint[jsons.length];
+
+        for (int i = 0; i < jsons.length; i++) {
+            dataPoints[i] = Janus.parse(jsons[i], TimeTrackingDataPoint.class);
+        }
+        Arrays.sort(dataPoints);
+
+        return dataPoints;
     }
 }

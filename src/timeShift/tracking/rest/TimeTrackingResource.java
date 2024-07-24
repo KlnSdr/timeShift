@@ -2,9 +2,7 @@ package timeShift.tracking.rest;
 
 import dobby.annotations.Get;
 import dobby.annotations.Post;
-import dobby.exceptions.MalformedJsonException;
 import dobby.io.HttpContext;
-import dobby.io.response.Response;
 import dobby.io.response.ResponseCodes;
 import dobby.session.Session;
 import dobby.util.json.NewJson;
@@ -13,8 +11,6 @@ import timeShift.tracking.TimeTrackingDataPoint;
 import timeShift.tracking.TimeTrackingDataPointFactory;
 import timeShift.tracking.service.TimeTrackingService;
 
-import java.io.IOException;
-import java.net.Socket;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -42,6 +38,7 @@ public class TimeTrackingResource {
     public void getByYear(HttpContext context) {
         final int year = Integer.parseInt(context.getRequest().getParam("year"));
         final TimeTrackingDataPoint[] dataPoints = service.find(getUserId(context), year);
+
 
         final NewJson jsonBody = new NewJson();
         jsonBody.setList("data", List.of(Arrays.stream(dataPoints).map(TimeTrackingDataPoint::toJson).toArray(NewJson[]::new)));
@@ -75,7 +72,7 @@ public class TimeTrackingResource {
 
     @AuthorizedOnly
     @Post(BASE_PATH)
-    public void save(HttpContext context) throws IOException {
+    public void save(HttpContext context) {
         final String nextState = getNextState(getUserId(context));
 
         final TimeTrackingDataPoint dataPoint = parseDataPoint(context);
@@ -96,13 +93,6 @@ public class TimeTrackingResource {
     private String getNextState(UUID userId) {
         final TimeTrackingDataPoint calendar = TimeTrackingDataPointFactory.getNow();
         final TimeTrackingDataPoint[] dataPoints = service.find(userId, calendar.getYear(), calendar.getMonth(), calendar.getDay());
-
-        Arrays.sort(dataPoints, (a, b) -> {
-            if (a.getHour() == b.getHour()) {
-                return a.getMinute() - b.getMinute();
-            }
-            return a.getHour() - b.getHour();
-        });
 
         String nextState = "kommen";
         if (dataPoints.length > 0) {

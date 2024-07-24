@@ -7,12 +7,13 @@ import janus.annotations.JanusInteger;
 import janus.annotations.JanusUUID;
 import thot.annotations.Bucket;
 
+import java.util.Comparator;
 import java.util.UUID;
 
 import static timeShift.tracking.service.TimeTrackingService.BUCKET_NAME;
 
 @Bucket(BUCKET_NAME)
-public class TimeTrackingDataPoint implements DataClass {
+public class TimeTrackingDataPoint implements DataClass, Comparable<TimeTrackingDataPoint> {
     @JanusInteger("year")
     private int year;
     @JanusInteger("month")
@@ -29,8 +30,11 @@ public class TimeTrackingDataPoint implements DataClass {
     private boolean isStart;
     @JanusBoolean("isRemote")
     private boolean isRemote;
+    @JanusUUID("id")
+    private UUID id;
 
     public TimeTrackingDataPoint() {
+        id = UUID.randomUUID();
     }
 
     public int getYear() {
@@ -99,7 +103,7 @@ public class TimeTrackingDataPoint implements DataClass {
 
     @Override
     public String getKey() {
-        return userId + "-" + year + "-" + month + "-" + day;
+        return userId + "-" + year + "-" + month + "-" + day + "-" + id;
     }
 
     @Override
@@ -111,6 +115,7 @@ public class TimeTrackingDataPoint implements DataClass {
         json.setInt("hour", hour);
         json.setInt("minute", minute);
         json.setString("userId", userId.toString());
+        json.setString("id", id.toString());
         json.setBoolean("isStart", isStart);
         json.setBoolean("isRemote", isRemote);
         return json;
@@ -124,8 +129,26 @@ public class TimeTrackingDataPoint implements DataClass {
         json.setInt("hour", hour);
         json.setInt("minute", minute);
         json.setString("userId", userId.toString());
+        json.setString("id", id.toString());
         json.setString("isStart", isStart ? "true" : "false");
         json.setString("isRemote", isRemote ? "true" : "false");
         return json;
+    }
+
+    @Override
+    public int compareTo(TimeTrackingDataPoint other) {
+        if (this.year != other.year) {
+            return Integer.compare(this.year, other.year);
+        }
+        if (this.month != other.month) {
+            return Integer.compare(this.month, other.month);
+        }
+        if (this.day != other.day) {
+            return Integer.compare(this.day, other.day);
+        }
+        if (this.hour != other.hour) {
+            return Integer.compare(this.hour, other.hour);
+        }
+        return Integer.compare(this.minute, other.minute);
     }
 }
