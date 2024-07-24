@@ -1,6 +1,6 @@
 {
   "dobby": {
-    "port": 3000,
+    "port": 3456,
     "threads": 10,
     "staticContent": {
       "directory": "static"
@@ -11,7 +11,7 @@
   },
   "application": {
     "name": "timeShift",
-    "version": "0.0.1"
+    "version": "1.0.0"
   },
   "hades": {
     "login": {
@@ -19,7 +19,7 @@
       "lockDuration": 300000,
       "redirect": {
         "success": "/",
-        "successAdmin": "/"
+        "successAdmin": "/hades"
       }
     },
     "context": "/timeShift"
