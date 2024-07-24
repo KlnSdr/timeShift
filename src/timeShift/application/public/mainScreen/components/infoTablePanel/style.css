@@ -12,3 +12,15 @@
         grid-template-rows: repeat(2, 1fr);
     }
 }
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.yellow {
+    color: #ffba02;
+}

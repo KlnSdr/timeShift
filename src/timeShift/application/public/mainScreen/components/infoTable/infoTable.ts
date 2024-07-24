@@ -22,12 +22,15 @@ class infoTable implements Component {
 
   public instructions(): edomTemplate {
     return {
-      tag: "table",
+      tag: "div",
       id: this.id,
-      classes: ["infoTable"],
       children: [
         new infoTableHeader(this.headline).instructions(),
-        ...this.renderData(this.data),
+        {
+          tag: "table",
+          classes: ["infoTable"],
+          children: [...this.renderData(this.data)],
+        },
       ],
     };
   }

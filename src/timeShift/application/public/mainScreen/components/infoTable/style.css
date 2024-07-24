@@ -1,4 +1,5 @@
 .infoTable {
     border-collapse: collapse;
     height: 0;
+    width: 100%;
 }
