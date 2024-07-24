@@ -192,7 +192,7 @@ class infoTablePanel implements Component {
         totalHours -= 1;
         totalMinutes += 60;
       }
-      return `${totalHours}:${totalMinutes}`;
+      return `${totalHours}:${totalMinutes < 10? "0": ""}${totalMinutes}`;
     }
     return "--:--";
   }
@@ -219,7 +219,7 @@ class infoTablePanel implements Component {
       });
       sumHours += Math.floor(sumMinutes / 60);
       sumMinutes = sumMinutes % 60;
-      return `${sumHours}:${sumMinutes}`;
+      return `${sumHours}:${sumMinutes < 10 ? "0": ""}${sumMinutes}`;
     }
 
     return "--:--";
@@ -260,7 +260,7 @@ class infoTablePanel implements Component {
     const totalHours: number = Math.floor(totalMinutes / 60);
     const totalMinutesMod: number = totalMinutes % 60;
 
-    return `${totalHours}:${totalMinutesMod}`;
+    return `${totalHours}:${totalMinutesMod < 10 ? "0": ""}${totalMinutesMod}`;
   }
 
   private static enhanceData(
@@ -281,7 +281,7 @@ class infoTablePanel implements Component {
           point.isStart ? "fa-arrow-circle-right" : "fa-arrow-circle-left",
           point.isStart ? "green" : "red",
         ],
-        time: `${point.hour}:${point.minute}`,
+        time: `${point.hour}:${point.minute < 10 ? "0": ""}${point.minute}`,
         additionalText: "",
       });
 
