@@ -1,4 +1,6 @@
 class mainPanel implements Component {
+  private infoTablePanel: infoTablePanel = new infoTablePanel();
+
   public render(parent: edomElement) {
     edom.fromTemplate([this.instructions()], parent);
   }
@@ -9,13 +11,13 @@ class mainPanel implements Component {
       classes: ["mainPanel"],
       children: [
         new startStopPanel().instructions(),
-        new calendarPanel(mainPanel.loadAndOpenDay).instructions(),
-        new infoTablePanel().instructions(),
+        new calendarPanel(this.loadAndOpenDay.bind(this)).instructions(),
+        this.infoTablePanel.instructions(),
       ],
     };
   }
 
-  private static loadAndOpenDay(day: number, month: number, year: number) {
+  private loadAndOpenDay(day: number, month: number, year: number) {
     fetch(`{{CONTEXT}}/rest/time-tracking/${year}/${month}/${day}`, {})
       .then((response) => {
         if (response.ok) {
@@ -24,7 +26,7 @@ class mainPanel implements Component {
         throw new Error("HTTP " + response.status);
       })
       .then(({ data }: { data: dataPoint[] }) => {
-        console.log(data);
+        this.infoTablePanel.update(data);
       })
       .catch((error) => {
         alert("Error: " + error);

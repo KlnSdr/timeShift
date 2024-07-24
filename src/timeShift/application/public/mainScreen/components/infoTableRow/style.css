@@ -1,7 +1,0 @@
-.infoTableRow {
-    border-bottom: 1px solid var(--darker);
-}
-
-.infoTableRow:last-child {
-    border-bottom: none;
-}
