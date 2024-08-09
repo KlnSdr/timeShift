@@ -60,13 +60,13 @@ class infoTablePanel implements Component {
     const firstArrival: string = enhancedData.filter((d) => d.text === "kommen")
       .length
       ? enhancedData.filter((d) => d.text === "kommen")[0].time
-      : "--:--";
+      : "00:00";
     const lastDeparture: string = enhancedData.filter((d) => d.text === "gehen")
       .length
       ? enhancedData.filter((d) => d.text === "gehen")[
           enhancedData.filter((d) => d.text === "gehen").length - 1
         ].time
-      : "--:--";
+      : "00:00";
     const totalPresence: string =
       infoTablePanel.calculateTotalPresence(enhancedData);
     const totalBreak: string = infoTablePanel.calculateTotalBreak(enhancedData);
@@ -182,19 +182,16 @@ class infoTablePanel implements Component {
     totalPresence: string,
     totalBreak: string,
   ): string {
-    if (totalPresence !== "--:--" && totalBreak !== "--:--") {
-      const [hoursPresence, minutesPresence] = totalPresence.split(":");
-      const [hoursBreak, minutesBreak] = totalBreak.split(":");
-      let totalHours: number = parseInt(hoursPresence) - parseInt(hoursBreak);
-      let totalMinutes: number =
-        parseInt(minutesPresence) - parseInt(minutesBreak);
-      if (totalMinutes < 0) {
-        totalHours -= 1;
-        totalMinutes += 60;
-      }
-      return `${totalHours}:${totalMinutes < 10? "0": ""}${totalMinutes}`;
+    const [hoursPresence, minutesPresence] = totalPresence.split(":");
+    const [hoursBreak, minutesBreak] = totalBreak.split(":");
+    let totalHours: number = parseInt(hoursPresence) - parseInt(hoursBreak);
+    let totalMinutes: number =
+      parseInt(minutesPresence) - parseInt(minutesBreak);
+    if (totalMinutes < 0) {
+      totalHours -= 1;
+      totalMinutes += 60;
     }
-    return "--:--";
+    return `${totalHours}:${totalMinutes < 10? "0": ""}${totalMinutes}`;
   }
 
   private static calculateTotalBreak(
@@ -222,7 +219,7 @@ class infoTablePanel implements Component {
       return `${sumHours}:${sumMinutes < 10 ? "0": ""}${sumMinutes}`;
     }
 
-    return "--:--";
+    return "00:00";
   }
 
   private static calculateTotalPresence(
@@ -247,7 +244,7 @@ class infoTablePanel implements Component {
       : undefined;
 
     if (!(firstArrival && lastDeparture)) {
-      return "--:--";
+      return "00:00";
     }
 
     const arrival: string[] = firstArrival.split(":");
