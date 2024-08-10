@@ -12,7 +12,7 @@
   },
   "application": {
     "name": "timeShift",
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   "hades": {
     "login": {
@@ -23,6 +23,11 @@
         "successAdmin": "/hades"
       }
     },
+    "unauthorizedRedirectTarget": "/hades/login",
+    "unauthorizedRedirectPaths": [
+      "/",
+      "/index.html"
+    ],
     "context": "/timeShift"
   }
 }

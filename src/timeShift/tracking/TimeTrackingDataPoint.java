@@ -5,9 +5,8 @@ import janus.DataClass;
 import janus.annotations.JanusBoolean;
 import janus.annotations.JanusInteger;
 import janus.annotations.JanusUUID;
-import thot.annotations.Bucket;
+import thot.annotations.v2.Bucket;
 
-import java.util.Comparator;
 import java.util.UUID;
 
 import static timeShift.tracking.service.TimeTrackingService.BUCKET_NAME;
