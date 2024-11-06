@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/timeShift_jar</output-path>
     <root id="archive" name="timeShift.jar">
       <element id="module-output" name="timeShift" />
-      <element id="extracted-dir" path="$USER_HOME$/dev/customJars/Hades/v0.5/hades.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/dev/customJars/Hades/v0.6/hades.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
