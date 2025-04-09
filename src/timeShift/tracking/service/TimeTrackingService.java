@@ -1,7 +1,7 @@
 package timeShift.tracking.service;
 import dobby.util.json.NewJson;
-import janus.Janus;
 import thot.connector.Connector;
+import thot.janus.Janus;
 import timeShift.tracking.TimeTrackingDataPoint;
 
 import java.util.Arrays;

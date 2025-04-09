@@ -1,11 +1,11 @@
 package timeShift.tracking;
 
 import dobby.util.json.NewJson;
-import janus.DataClass;
-import janus.annotations.JanusBoolean;
-import janus.annotations.JanusInteger;
-import janus.annotations.JanusUUID;
-import thot.annotations.v2.Bucket;
+import thot.api.annotations.v2.Bucket;
+import thot.janus.DataClass;
+import thot.janus.annotations.JanusBoolean;
+import thot.janus.annotations.JanusInteger;
+import thot.janus.annotations.JanusUUID;
 
 import java.util.UUID;
 
