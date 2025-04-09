@@ -9,12 +9,12 @@
       "maxAge": 1,
       "store": "hades.session.HadesSessionStore"
     },
-    "logLevel": "DEBUG"
+    "logLevel": "WARN"
   },
   "application": {
     "name": "timeShift",
-    "version": "1.3",
-    "devMode": true,
+    "version": "1.4",
+    "devMode": false,
     "dbHost": "thot-container"
   },
   "hades": {
