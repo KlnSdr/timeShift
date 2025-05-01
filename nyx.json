@@ -3,13 +3,13 @@
   "project": {
     "entry": "timeShift.application.TimeShiftApplication",
     "name": "timeShift",
-    "version": "1.4",
+    "version": "1.5",
     "group": "dobby",
     "dependencies": [
       {
         "group": "dobby",
         "name": "hades",
-        "version": "2.1"
+        "version": "2.2"
       }
     ]
   },

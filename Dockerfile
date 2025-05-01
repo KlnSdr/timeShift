@@ -10,7 +10,7 @@ FROM gcr.io/distroless/java21
 
 WORKDIR /app
 
-COPY --from=builder /app/build/timeShift-1.4.jar /app/app.jar
+COPY --from=builder /app/build/timeShift-1.5.jar /app/app.jar
 
 EXPOSE 3456
 
