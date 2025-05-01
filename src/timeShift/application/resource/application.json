@@ -9,7 +9,7 @@
       "maxAge": 1,
       "store": "hades.session.HadesSessionStore"
     },
-    "logLevel": "WARN"
+    "logLevel": "DEBUG"
   },
   "application": {
     "name": "timeShift",
