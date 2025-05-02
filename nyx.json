@@ -3,7 +3,7 @@
   "project": {
     "entry": "timeShift.application.TimeShiftApplication",
     "name": "timeShift",
-    "version": "1.5",
+    "version": "1.6-snapshot",
     "group": "dobby",
     "dependencies": [
       {
